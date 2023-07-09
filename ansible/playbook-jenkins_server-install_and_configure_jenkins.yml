@@ -31,6 +31,10 @@
         host: "{{ inventory_hostname }}"
         port: 8080
 
+    - name: 'Wait until file /var/lib/jenkins/secrets/initialAdminPassword exists'
+      ansible.builtin.wait_for:
+        path: '/var/lib/jenkins/secrets/initialAdminPassword'
+
     - name: 'Get Jenkins initialAdminPassword'
       ansible.builtin.slurp:
         src: '/var/lib/jenkins/secrets/initialAdminPassword'
