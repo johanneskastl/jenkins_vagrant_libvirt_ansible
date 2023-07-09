@@ -20,3 +20,6 @@
 
 - name: 'Run playbook-jenkins_server-add_Jenkins_repository.yml'
   import_playbook: playbook-jenkins_server-add_Jenkins_repository.yml
+
+- name: 'Run playbook-jenkins_server-install_and_configure_jenkins.yml'
+  import_playbook: playbook-jenkins_server-install_and_configure_jenkins.yml
