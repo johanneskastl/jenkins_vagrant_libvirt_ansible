@@ -1,0 +1,130 @@
+## Type:        integer(-20:20)
+## Default:     0
+## ServiceRestart: jenkins
+#
+# The nice level at which the Jenkins server (and its build jobs) run.
+#
+JENKINS_NICE="0"
+
+## Type:        string
+## Default:     "-Djava.awt.headless=true"
+## ServiceRestart: jenkins
+#
+# Options to pass to java when running Jenkins.
+#
+JENKINS_JAVA_OPTIONS="-Djava.awt.headless=true -Xms256m -Xmx640m -Dhudson.DNSMultiCast.disabled=true -XX:+HeapDumpOnOutOfMemoryError"
+
+## Type:        string
+## Default:     "0.0.0.0"
+## ServiceRestart: jenkins
+#
+# The HTTP host address that Jenkins will be bound to.
+# The default is 0.0.0.0 which means it is listening
+# on all available interfaces.
+# For example, a value of "localhost" or "127.0.0.1" would mean
+# Jenkins would only listen for requests from localhost.
+#
+JENKINS_HOST="0.0.0.0"
+
+## Type:        integer(0:65535)
+## Default:     8080
+## ServiceRestart: jenkins
+#
+# Port Jenkins is listening on.
+# Set to -1 to disable, if you were using HTTPS instead
+#
+JENKINS_PORT="8080"
+
+## Type:        string
+## Default:
+## ServiceRestart: jenkins
+#
+# The HTTPS host address that Jenkins will be bound to.
+# The default is 0.0.0.0 which means it is listening
+# on all available interfaces.
+# For example, a value of "localhost" or "127.0.0.1" would mean
+# that Jenkins would only listen for requests from localhost.
+#
+# JENKINS_HTTPS_HOST="0.0.0.0"
+
+## Type:        integer(0:65535)
+## Default:
+## ServiceRestart: jenkins
+#
+# HTTPS Port Jenkins is listening on.
+# Comment out or set to -1 to disable
+#
+# JENKINS_HTTPS_PORT="8443"
+
+## Type:        string
+## Default:     ""
+## ServiceRestart: jenkins
+#
+# The AJP host address that Jenkins will be bound to.
+# The default is "".
+# For example, a value of "localhost" would mean that
+# Jenkins would only listen for AJP requests from localhost.
+#
+JENKINS_AJP_HOST=""
+
+## Type:        integer(0:65535)
+## Default:     8009
+## ServiceRestart: jenkins
+#
+# Ajp13 Port Jenkins is listening on.
+# Set to -1 to disable, if you were using HTTPS instead.
+#
+JENKINS_AJP_PORT="8009"
+
+## Type:        integer(1:9)
+## Default:     5
+## ServiceRestart: jenkins
+#
+# Debug level for logs -- the higher the value, the more verbose.
+# 5 is INFO.
+#
+JENKINS_DEBUG_LEVEL="5"
+
+## Type:        yesno
+## Default:     no
+## ServiceRestart: jenkins
+#
+# Whether to enable access logging or not.
+#
+JENKINS_ENABLE_ACCESS_LOG="no"
+
+## Type:        integer
+## Default:     100
+## ServiceRestart: jenkins
+#
+# Maximum number of HTTP worker threads.
+#
+JENKINS_HANDLER_MAX="100"
+
+## Type:        integer
+## Default:     20
+## ServiceRestart: jenkins
+#
+# Maximum number of idle HTTP worker threads.
+#
+JENKINS_HANDLER_IDLE="20"
+
+## Type:        string
+## Default:
+## ServiceRestart: jenkins
+#
+# Context path for the Jenkins web application.
+# (e.g. "/jenkins" would serve the app on
+#       http://localhost:8080/jenkins)
+#
+JENKINS_PREFIX=""
+
+## Type:        integer(0:65535)
+## Default:     empty (no change)
+## ServiceRestart: jenkins
+#
+# Ulimit for jenkins.
+# On busy hosts 8000 is a good value.
+# If empty, the default (1024) will not be changed.
+#
+JENKINS_ULIMIT=""
