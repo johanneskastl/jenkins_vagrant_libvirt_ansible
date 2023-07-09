@@ -1,0 +1,19 @@
+---
+
+- name: 'Run 10_SLES_register.yml'
+  import_playbook: 10_SLES_register.yml
+
+- name: 'Run playbook-all_nodes-zypper_ref_accept_keys.yml'
+  import_playbook: playbook-all_nodes-zypper_ref_accept_keys.yml
+
+- name: 'Run playbook-all_nodes-add_screenrc.yml'
+  import_playbook: playbook-all_nodes-add_screenrc.yml
+
+- name: 'Run playbook-all_nodes-create_a_vimrc.yml'
+  import_playbook: playbook-all_nodes-create_a_vimrc.yml
+
+- name: 'Run playbook-all_nodes-minimal_bashrc.yml'
+  import_playbook: playbook-all_nodes-minimal_bashrc.yml
+
+- name: 'Run playbook-all_nodes-minimal_tmux_configuration.yml'
+  import_playbook: playbook-all_nodes-minimal_tmux_configuration.yml
