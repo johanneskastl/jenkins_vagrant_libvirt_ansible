@@ -1,0 +1,36 @@
+---
+- name: 'Install, start and enable Jenkins'
+  hosts: 'jenkins_server'
+  gather_facts: true
+  become: true
+
+  pre_tasks:
+
+    - name: 'Create file /etc/sysconfig/jenkins'
+      ansible.builtin.template:
+        src: 'etc_sysconfig_jenkins.j2'
+        dest: '/etc/sysconfig/jenkins'
+        owner: 'root'
+        group: 'root'
+        mode: '0644'
+
+  roles:
+
+    - role: 'johanneskastl.install_one_or_more_packages'
+      packages_to_be_installed:
+        - jenkins-lts
+    - role: 'johanneskastl.start_and_or_enable_systemd_service'
+      service_name: 'jenkins'
+      service_started: true
+      service_enabled: true
+
+  post_tasks:
+
+    - name: 'Get Jenkins initialAdminPassword'
+      ansible.builtin.slurp:
+        src: '/var/lib/jenkins/secrets/initialAdminPassword'
+      register: initialAdminPassword
+
+    - name: 'Display the Jenkins initialAdminPassword'
+      ansible.builtin.debug:
+        var: initialAdminPassword.content | b64decode | trim
