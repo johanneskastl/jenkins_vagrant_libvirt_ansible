@@ -17,3 +17,6 @@
 
 - name: 'Run playbook-all_nodes-minimal_tmux_configuration.yml'
   import_playbook: playbook-all_nodes-minimal_tmux_configuration.yml
+
+- name: 'Run playbook-jenkins_server-add_Jenkins_repository.yml'
+  import_playbook: playbook-jenkins_server-add_Jenkins_repository.yml
