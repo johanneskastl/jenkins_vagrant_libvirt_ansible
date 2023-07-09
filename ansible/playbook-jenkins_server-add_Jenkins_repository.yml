@@ -1,0 +1,13 @@
+---
+- name: 'Add the Jenkins repository'
+  hosts: 'jenkins_server'
+  gather_facts: true
+  become: true
+
+  roles:
+    - role: 'johanneskastl.add_zypper_repository'
+      repository_name: 'devel_tools_building'
+      repository_baseurl: "https://download.opensuse.org/repositories/devel:/tools:/building/{{ ansible_distribution_version }}/"
+      auto_import_keys: true
+      when:
+        - 'ansible_distribution == "openSUSE Leap"'
