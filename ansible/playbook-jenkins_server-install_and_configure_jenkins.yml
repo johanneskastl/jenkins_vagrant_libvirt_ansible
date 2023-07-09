@@ -36,6 +36,10 @@
         src: '/var/lib/jenkins/secrets/initialAdminPassword'
       register: initialAdminPassword
 
+    - name: 'Display the Jenkins IP address'
+      ansible.builtin.debug:
+        msg: "Jenkins is reachable at http://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:8080"
+
     - name: 'Display the Jenkins initialAdminPassword'
       ansible.builtin.debug:
-        var: initialAdminPassword.content | b64decode | trim
+        msg: "The initial password ist {{ initialAdminPassword.content | b64decode | trim }}"
