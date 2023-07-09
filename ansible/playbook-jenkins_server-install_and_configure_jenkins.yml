@@ -26,6 +26,12 @@
 
   post_tasks:
 
+    - name: 'Wait until Jenkins URL is reachable'
+      ansible.builtin.wait_for:
+        host: "{{ inventory_hostname }}"
+        port: 8080
+        delay: 10
+
     - name: 'Get Jenkins initialAdminPassword'
       ansible.builtin.slurp:
         src: '/var/lib/jenkins/secrets/initialAdminPassword'
