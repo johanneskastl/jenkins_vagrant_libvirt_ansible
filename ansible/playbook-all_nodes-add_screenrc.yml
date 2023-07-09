@@ -1,0 +1,9 @@
+---
+- name: 'Add a screenrc'
+  hosts: 'all'
+  gather_facts: true
+  become: true
+
+  roles:
+    - role: 'johanneskastl.add_screenrc'
+      additional_users: "{{ ansible_user }}"
