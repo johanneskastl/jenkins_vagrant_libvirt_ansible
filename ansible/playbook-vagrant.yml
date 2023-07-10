@@ -23,3 +23,6 @@
 
 - name: 'Run playbook-jenkins_server-install_and_configure_jenkins.yml'
   import_playbook: playbook-jenkins_server-install_and_configure_jenkins.yml
+
+- name: 'Run playbook-jenkins-agent01-install_docker.yml'
+  import_playbook: playbook-jenkins-agent01-install_docker.yml
