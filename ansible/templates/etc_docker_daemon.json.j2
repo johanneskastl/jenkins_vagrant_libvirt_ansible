@@ -1,0 +1,9 @@
+{
+  "hosts": ["unix:///var/run/docker.sock", "tcp://{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}:2375"],
+  "log-level": "warn",
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "5"
+  }
+}
