@@ -1,0 +1,53 @@
+---
+- name: 'Install, start and enable docker on jenkins-agent01'
+  hosts: 'jenkins-agent01'
+  gather_facts: true
+  become: true
+
+  roles:
+
+    - role: 'johanneskastl.install_one_or_more_packages'
+      packages_to_be_installed:
+        - docker
+    - role: 'johanneskastl.start_and_or_enable_systemd_service'
+      service_name: 'docker'
+      service_started: true
+      service_enabled: true
+
+  post_tasks:
+
+    - name: 'Create /etc/sysconfig/docker'
+      ansible.builtin.template:
+        src: 'etc_sysconfig_docker.j2'
+        dest: '/etc/sysconfig/docker'
+        owner: 'root'
+        group: 'root'
+        mode: '0644'
+      notify:
+        - 'Restart docker'
+
+    - name: 'Create directory /etc/docker/daemon.json'
+      ansible.builtin.file:
+        path: '/etc/docker/'
+        owner: 'root'
+        group: 'root'
+        mode: '0755'
+      notify:
+        - 'Restart docker'
+
+    - name: 'Create /etc/docker/daemon.json to allow access from the outside'
+      ansible.builtin.template:
+        src: 'etc_docker_daemon.json.j2'
+        dest: '/etc/docker/daemon.json'
+        owner: 'root'
+        group: 'root'
+        mode: '0644'
+      notify:
+        - 'Restart docker'
+
+  handlers:
+
+    - name: 'Restart docker'
+      ansible.builtin.service:
+        name: 'docker'
+        state: 'restarted'
