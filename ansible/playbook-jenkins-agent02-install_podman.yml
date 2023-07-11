@@ -1,0 +1,15 @@
+---
+- name: 'Install, start and enable podman on jenkins-agent02'
+  hosts: 'jenkins-agent02'
+  gather_facts: true
+  become: true
+
+  roles:
+
+    - role: 'johanneskastl.install_one_or_more_packages'
+      packages_to_be_installed:
+        - podman
+    - role: 'johanneskastl.start_and_or_enable_systemd_service'
+      service_name: 'podman'
+      service_started: true
+      service_enabled: true
