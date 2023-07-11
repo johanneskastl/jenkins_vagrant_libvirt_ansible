@@ -1,0 +1,9 @@
+---
+- name: 'Install, start and enable k3s on jenkins-agent03'
+  hosts: 'jenkins-agent03'
+  gather_facts: true
+  become: true
+
+  roles:
+
+    - role: 'johanneskastl.install_k3s'
