@@ -1,8 +1,12 @@
 # jenkins_vagrant_libvirt_ansible
 
 This Vagrant setup creates a VM and configures [a Jenkins
-server](https://jenkins.io). It also creates a VM that can be used as a
-Jenkins agent (manually, there is no full automation yet).
+server](https://jenkins.io). It also creates three VMs that can be used as a
+Jenkins agent (manually, there is no full automation yet):
+
+- `jenkins-agent01` with docker installed
+- `jenkins-agent02` with podman installed
+- `jenkins-agent03` with k3s (Kubernetes) installed
 
 Default OS is openSUSE Leap 15.4. Although that can be changed in the
 Vagrantfile, please beware that this will break the Ansible provisioning.
@@ -31,7 +35,7 @@ it yourself), just comment out the following lines in the `Vagrantfile`:
       ansible.compatibility_mode = "2.0"
       ansible.limit = "all"
       ansible.groups = {
-        "jenkins_agents"  => [ "jenkins-agent01" ],
+        "jenkins_agents"  => [ "jenkins-agent01", "jenkins-agent02", "jenkins-agent03" ],
         "jenkins_server"  => [ "jenkinsserver" ],
       }
       ansible.playbook = "ansible/playbook-vagrant.yml"
