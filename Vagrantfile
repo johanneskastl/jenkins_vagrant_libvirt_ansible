@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
 
   ###################################################################################
   # define number of Jenkins agent VMs
-  W = 2
+  W = 3
 
   ###################################################################################
   # provision W VMs as agents
@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
       ansible.compatibility_mode = "2.0"
       ansible.limit = "all"
       ansible.groups = {
-        "jenkins_agents"  => [ "jenkins-agent01", "jenkins-agent02" ],
+        "jenkins_agents"  => [ "jenkins-agent01", "jenkins-agent02", "jenkins-agent03" ],
         "jenkins_server"  => [ "jenkinsserver" ],
       }
       ansible.playbook = "ansible/playbook-vagrant.yml"
