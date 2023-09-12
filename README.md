@@ -8,7 +8,7 @@ Jenkins agent (manually, there is no full automation yet):
 - `jenkins-agent02` with podman installed
 - `jenkins-agent03` with k3s (Kubernetes) installed
 
-Default OS is openSUSE Leap 15.4. Although that can be changed in the
+Default OS is openSUSE Leap 15.5. Although that can be changed in the
 Vagrantfile, please beware that this will break the Ansible provisioning.
 
 ## Vagrant
@@ -27,7 +27,7 @@ Vagrantfile, please beware that this will break the Ansible provisioning.
 
 ## Disabling the Ansible provisioning
 
-In case you do not want Ansible to install teleport (because you want to install
+In case you do not want Ansible to install Jenkins (because you want to install
 it yourself), just comment out the following lines in the `Vagrantfile`:
 
 ```hcl
